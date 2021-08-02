@@ -1,0 +1,55 @@
+---
+title: "fish-length-weight"
+author: "Allie Cole"
+date: "8/2/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library("tidyverse")
+```
+
+# This is a big title!
+
+## *this is a fancy subtitle!*
+
+## **We will be working with fish weights**
+
+\#![alt text here](path-to-image-here) maybe how we add a pic?
+
+### Function to Estimate Fish Standard Weight
+
+#### Using this equation
+
+`W = aL^b^`
+
+```{r}
+stand_weight <- function(a, b, L) {
+  a*L^b
+} #function to find the mass
+milkfish <- stand_weight(a = 0.0905, b = 2.25, L = 60) #each different fish at 60cm 
+g_trevally <- stand_weight(a = 0.0353, b = 3.05, L = 60)
+g_barracuda <- stand_weight(a = 0.0181, b = 3.27, L = 60)
+
+fish_length <- seq(from = 0, to = 200, by = 1)
+barracuda_weight <- stand_weight(a = 0.0181, b = 3.27, L = fish_length)
+```
+
+### And Now We Bind!
+
+```{r}
+fish_df <- data.frame(fish_length, barracuda_weight)
+```
+
+### And Then a \~Beautiful Graph\~
+
+```{r}
+ggplot(data = fish_df, aes(x = fish_length, y = barracuda_weight)) + 
+  geom_point(color = "light blue")  +
+  labs(x = "Length of Fish (cm)", 
+       y = "Barracuda (Individuals)", 
+       title = "Weight Flux in Gaint Barracuda",
+       caption = "As the Barracuda grow in length their weight increases at an exponential rate") +
+  theme_minimal()
+```
