@@ -7,7 +7,7 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-library("tidyverse")
+library(tidyverse)
 ```
 
 # This is a big title!
@@ -16,7 +16,7 @@ library("tidyverse")
 
 ## **We will be working with fish weights**
 
-\#![alt text here](path-to-image-here) maybe how we add a pic?
+<!--\#![alt text here](path-to-image-here) maybe how we add a pic?-->
 
 ### Function to Estimate Fish Standard Weight
 
@@ -51,5 +51,5 @@ ggplot(data = fish_df, aes(x = fish_length, y = barracuda_weight)) +
        y = "Barracuda (Individuals)", 
        title = "Weight Flux in Gaint Barracuda",
        caption = "As the Barracuda grow in length their weight increases at an exponential rate") +
-  theme_minimal()
+  theme_classic()
 ```
